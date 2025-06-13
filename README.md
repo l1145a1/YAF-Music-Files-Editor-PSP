@@ -18,11 +18,9 @@ Music Files Editor PSP is a program designed to modify **.yaf** (Yuke's Audio Fi
    - **Add New** to insert a new AT3 file.
 4. Save the changes and use the modified **.yaf** file in WWE PSP.
 
-## Installation
-Ensure **Python 3.x** is installed before running the program.
-
-```bash
-git clone https://github.com/USERNAME/Music-Files-Editor-PSP.git
-cd Music-Files-Editor-PSP
-pip install -r requirements.txt
-python main.py
+## Acknowledgments
+Special thanks to:
+- **Arjun** for his **Music Adder Tool v1**, which inspired part of this project's functionality.
+- **BMK** for his **AT9/AT3 Converter**, which provided valuable insights into AT3 file structures.
+- **WCG847** for sharing detailed information about **YAF file structures**, aiding in format understanding.
+- **Microsoft Copilot** for solving the **2048-byte padding issue** in AT3 files, ensuring proper readability in-game.
