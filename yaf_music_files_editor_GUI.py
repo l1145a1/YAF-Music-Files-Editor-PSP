@@ -420,7 +420,7 @@ def replace_file():
         if not at3_path:
             print("Penggantian dibatalkan.")
             return
-        replace_at3(selected)
+        replace_at3(selected, at3_path)
         #setelah perintah spesifik
         try:
             backup_file(yaf_file_path)
