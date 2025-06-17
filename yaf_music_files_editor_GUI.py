@@ -67,7 +67,10 @@ def reset_variables():
 
 def browse_file():
     global yaf_file_path
-    yaf_file_path = filedialog.askopenfilename()
+    yaf_file_path = filedialog.askopenfilename(
+    title="Pilih file YAF",
+    filetypes=[("Yuke's Audio Files", "*.yaf")]
+)
     if yaf_file_path:
         file_path_var.set(yaf_file_path)
         print(f"Selected file: {yaf_file_path}")
@@ -180,11 +183,15 @@ def export_at3(selected):
 
     # Dialog untuk simpan file
     output_file = filedialog.asksaveasfilename(
-        defaultextension=".at3",
+        defaultextension=".at3",  # atau ".adx" kalau kamu mau default-nya ke ADX
         initialfile=default_name,
-        filetypes=[("AT3 Audio Files", "*.at3")],
-        title="Simpan AT3"
+        filetypes=[
+            ("AT3 Audio Files", "*.at3"),
+            ("ADX Audio Files", "*.adx")
+        ],
+        title="Simpan Audio"
     )
+
 
     # Kalau user cancel, output_file akan kosong
     if not output_file:
@@ -314,7 +321,13 @@ def rebuild_sfay(f):
         pass  # File dibuat tapi belum diisi, hanya memastikan file ada
 
 def browse_at3_file():
-    at3_path_var.set(filedialog.askopenfilename(filetypes=[("AT3 Files", "*.at3")]))
+    at3_path_var.set(filedialog.askopenfilename(
+    filetypes=[
+        ("Audio Files (AT3, ADX)", "*.at3 *.adx"),
+        ("All files", "*.*")
+    ]
+))
+
 
 def validate_id_input(P):
     return P.isdigit() and len(P) <= 3  # Hanya angka, maksimum 3 digit
@@ -412,10 +425,14 @@ def replace_file():
         selected = selection[0]
         # Tampilkan file dialog untuk memilih file .at3
         at3_path = filedialog.askopenfilename(
-            title=f"Ganti AT3 untuk ID {selected}",
-            defaultextension=".at3",
-            filetypes=[("AT3 Audio Files", "*.at3")]
-        )
+        title=f"Ganti AT3 untuk ID {selected}",
+        defaultextension=".at3",
+        filetypes=[
+            ("Audio Files (AT3, ADX)", "*.at3 *.adx"),
+            ("All files", "*.*")
+        ]
+    )
+
 
         if not at3_path:
             print("Penggantian dibatalkan.")
